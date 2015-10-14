@@ -1,21 +1,30 @@
-package barqsoft.footballscores;
+package barqsoft.footballscores.utils;
+
+import barqsoft.footballscores.R;
 
 /**
  * Created by yehya khaled on 3/3/2015.
  */
 public class Utilities {
-    public static final int SERIE_A = 357;
-    public static final int PREMIER_LEGAUE = 354;
-    public static final int CHAMPIONS_LEAGUE = 362;
-    public static final int PRIMERA_DIVISION = 358;
-    public static final int BUNDESLIGA = 351;
+    public static final int FILLERLEAGUE = 357;
+    public static final int BUNDESLIGA = 394;
+    public static final int BUNDESLIGA2 = 395;
+    public static final int LIGUE = 396;
+    public static final int LIGUE2 = 397;
+    public static final int PREMIER_LEAGUE = 398;
+    public static final int PRIMERA_DIVISION = 399;
+    public static final int SEGUNDA_DIVISION = 400;
+    public static final int SERIE_A = 401;
+    public static final int PRIMERA_LIGA = 402;
+    public static final int BUNDESLIGA3 = 403;
+    public static final int EREDIVISIE = 404;
+    public static final int CHAMPIONS_LEAGUE = 405;
 
-    public static String getLeague(int league_num)
-    {
+    public static String getLeague(int league_num) {
         switch (league_num) {
             case SERIE_A:
                 return "Seria A";
-            case PREMIER_LEGAUE:
+            case PREMIER_LEAGUE:
                 return "Premier League";
             case CHAMPIONS_LEAGUE:
                 return "UEFA Champions League";
@@ -23,13 +32,29 @@ public class Utilities {
                 return "Primera Division";
             case BUNDESLIGA:
                 return "Bundesliga";
+            case FILLERLEAGUE:
+                return "Test Data ";
+            case LIGUE:
+                return "Ligue";
+            case SEGUNDA_DIVISION:
+                return "Segunda Division";
+            case PRIMERA_LIGA:
+                return "Primera Liga";
+            case EREDIVISIE:
+                return "Eredivisie";
+            case BUNDESLIGA2:
+                return "Bundesliga";
+            case LIGUE2:
+                return "Ligue";
+            case BUNDESLIGA3:
+                return "Bundesliga";
             default:
+                //todo strings.xml
                 return "Not known League Please report";
         }
     }
 
-    public static String getMatchDay(int match_day, int league_num)
-    {
+    public static String getMatchDay(int match_day, int league_num) {
         if (league_num == CHAMPIONS_LEAGUE) {
             if (match_day <= 6) {
                 return "Group Stages, Matchday : 6";
@@ -47,8 +72,7 @@ public class Utilities {
         }
     }
 
-    public static String getScores(int home_goals, int awaygoals)
-    {
+    public static String getScores(int home_goals, int awaygoals) {
         if (home_goals < 0 || awaygoals < 0) {
             return " - ";
         } else {
@@ -56,8 +80,7 @@ public class Utilities {
         }
     }
 
-    public static int getTeamCrestByTeamName(String teamname)
-    {
+    public static int getTeamCrestByTeamName(String teamname) {
         if (teamname == null) {
             return R.drawable.no_icon;
         }

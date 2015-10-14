@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import barqsoft.footballscores.about.AboutActivity;
+
 public class MainActivity extends AppCompatActivity {
     public static int selected_match_id;
     public static int current_fragment = 2;
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             my_main = new PagerFragment();
             getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, my_main)
+                    .replace(R.id.container, my_main)
                 .commit();
         }
     }
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState)
     {
+        //todo not always called.
         Log.v(save_tag, "will retrive");
         Log.v(save_tag, "fragment: " + String.valueOf(savedInstanceState.getInt("Pager_Current")));
         Log.v(save_tag, "selected id: " + savedInstanceState.getInt("Selected_match"));

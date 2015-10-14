@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import barqsoft.footballscores.scores.GamesScoresFragment;
+
 /**
  * Created by yehya khaled on 2/27/2015.
  */
@@ -23,7 +25,7 @@ public class PagerFragment extends Fragment
     public static final int NUM_PAGES = 5;
     public ViewPager mPagerHandler;
     private myPageAdapter mPagerAdapter;
-    private MainScreenFragment[] viewFragments = new MainScreenFragment[5];
+    private GamesScoresFragment[] viewFragments = new GamesScoresFragment[5];
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
@@ -34,7 +36,7 @@ public class PagerFragment extends Fragment
         {
             Date fragmentdate = new Date(System.currentTimeMillis()+((i-2)*86400000));
             SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
-            viewFragments[i] = new MainScreenFragment();
+            viewFragments[i] = new GamesScoresFragment();
             viewFragments[i].setFragmentDate(mformat.format(fragmentdate));
         }
         mPagerHandler.setAdapter(mPagerAdapter);
@@ -43,6 +45,10 @@ public class PagerFragment extends Fragment
     }
     private class myPageAdapter extends FragmentStatePagerAdapter
     {
+        public myPageAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
         @Override
         public Fragment getItem(int i)
         {
@@ -55,10 +61,6 @@ public class PagerFragment extends Fragment
             return NUM_PAGES;
         }
 
-        public myPageAdapter(FragmentManager fm)
-        {
-            super(fm);
-        }
         // Returns the page title for the top indicator
         @Override
         public CharSequence getPageTitle(int position)
