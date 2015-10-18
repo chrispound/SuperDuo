@@ -22,5 +22,7 @@ public class FootballScoresWidgetProvider  extends AppWidgetProvider{
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
     {
         super.onUpdate(context, appWidgetManager, appWidgetIds);
+        //todo set up ui
+        //todo set up alarm
     }
 }

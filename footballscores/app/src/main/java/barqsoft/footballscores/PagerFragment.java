@@ -39,6 +39,7 @@ public class PagerFragment extends Fragment
             viewFragments[i] = new GamesScoresFragment();
             viewFragments[i].setFragmentDate(mformat.format(fragmentdate));
         }
+        mPagerHandler.setOffscreenPageLimit(2);
         mPagerHandler.setAdapter(mPagerAdapter);
         mPagerHandler.setCurrentItem(MainActivity.current_fragment);
         return rootView;
