@@ -13,6 +13,15 @@ public class DatabaseContract {
     public static final String CONTENT_AUTHORITY = "barqsoft.footballscores";
     public static final String PATH = "scores";
     public static Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+    public static final int COL_HOME = 3;
+    public static final int COL_AWAY = 4;
+    public static final int COL_HOME_GOALS = 6;
+    public static final int COL_AWAY_GOALS = 7;
+    public static final int COL_DATE = 1;
+    public static final int COL_LEAGUE = 5;
+    public static final int COL_MATCHDAY = 9;
+    public static final int COL_ID = 8;
+    public static final int COL_MATCHTIME = 2;
 
     public static final class scores_table implements BaseColumns {
         //Table data

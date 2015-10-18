@@ -36,6 +36,8 @@
                 android:value="barqsoft.footballscores.MainActivity" />
         </activity>
         <service android:name=".service.GameDataService"/>
+        <service android:name=".widget.FootballWidgetListService"
+        android:permission="android.permission.BIND_REMOTEVIEWS" />
         <receiver android:name=".widget.FootballScoresWidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

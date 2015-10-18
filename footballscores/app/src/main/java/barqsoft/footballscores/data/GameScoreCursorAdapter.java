@@ -18,15 +18,7 @@ import barqsoft.footballscores.utils.Utilities;
  * Created by yehya khaled on 2/26/2015.
  */
 public class GameScoreCursorAdapter extends CursorAdapter {
-    public static final int COL_HOME = 3;
-    public static final int COL_AWAY = 4;
-    public static final int COL_HOME_GOALS = 6;
-    public static final int COL_AWAY_GOALS = 7;
-    public static final int COL_DATE = 1;
-    public static final int COL_LEAGUE = 5;
-    public static final int COL_MATCHDAY = 9;
-    public static final int COL_ID = 8;
-    public static final int COL_MATCHTIME = 2;
+
     public double detail_match_id = 0;
     private String FOOTBALL_SCORES_HASHTAG = "#Football_Scores";
 
@@ -46,25 +38,26 @@ public class GameScoreCursorAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, final Context context, Cursor cursor) {
         final GameScoreViewHolder mHolder = (GameScoreViewHolder) view.getTag();
-        mHolder.home_name.setText(cursor.getString(COL_HOME));
-        mHolder.away_name.setText(cursor.getString(COL_AWAY));
-        mHolder.date.setText(cursor.getString(COL_MATCHTIME));
-        mHolder.score.setText(Utilities.getScores(cursor.getInt(COL_HOME_GOALS), cursor.getInt(COL_AWAY_GOALS)));
-        mHolder.match_id = cursor.getDouble(COL_ID);
+        mHolder.home_name.setText(cursor.getString(DatabaseContract.COL_HOME));
+        mHolder.away_name.setText(cursor.getString(DatabaseContract.COL_AWAY));
+        mHolder.date.setText(cursor.getString(DatabaseContract.COL_MATCHTIME));
+        mHolder.score.setText(Utilities.getScores(cursor.getInt(DatabaseContract.COL_HOME_GOALS), cursor.getInt(DatabaseContract.COL_AWAY_GOALS)));
+        mHolder.match_id = cursor.getDouble(DatabaseContract.COL_ID);
         mHolder.home_crest.setImageResource(Utilities.getTeamCrestByTeamName(
-                cursor.getString(COL_HOME)));
+                cursor.getString(DatabaseContract.COL_HOME)));
         mHolder.away_crest.setImageResource(Utilities.getTeamCrestByTeamName(
-                cursor.getString(COL_AWAY)
+                cursor.getString(DatabaseContract.COL_AWAY)
         ));
         //Log.v(FetchScoreTask.LOG_TAG,mHolder.home_name.getText() + " Vs. " + mHolder.away_name.getText() +" id " + String.valueOf(mHolder.match_id));
         //Log.v(FetchScoreTask.LOG_TAG,String.valueOf(detail_match_id));
 
-        mHolder.matchDay.setText(Utilities.getMatchDay(cursor.getInt(COL_MATCHDAY),
-            cursor.getInt(COL_LEAGUE)));
-        mHolder.league.setText(Utilities.getLeague(cursor.getInt(COL_LEAGUE)));
+        mHolder.matchDay.setText(Utilities.getMatchDay(cursor.getInt(DatabaseContract.COL_MATCHDAY),
+            cursor.getInt(DatabaseContract.COL_LEAGUE)));
+        mHolder.league.setText(Utilities.getLeague(cursor.getInt(DatabaseContract.COL_LEAGUE)));
         mHolder.share.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 //add Share Action
                 context.startActivity(createShareForecastIntent(mHolder.home_name.getText() + " "
                     + mHolder.score.getText() + " " + mHolder.away_name.getText() + " "));

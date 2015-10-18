@@ -39,6 +39,8 @@ import retrofit.Retrofit;
  * Created by yehya khaled on 3/2/2015.
  */
 public class GameDataService extends IntentService {
+
+    //todo update this to a sync adapter.
     public static final String LOG_TAG = GameDataService.class.getSimpleName();
 
     public GameDataService()
@@ -156,8 +158,6 @@ public class GameDataService extends IntentService {
                 match_values.put(DatabaseContract.scores_table.AWAY_GOALS_COL, goalsAwayTeam);
                 match_values.put(DatabaseContract.scores_table.LEAGUE_COL, leagueId);
                 match_values.put(DatabaseContract.scores_table.MATCH_DAY, matchDay);
-                //log spam
-
 
                 values.add(match_values);
 
