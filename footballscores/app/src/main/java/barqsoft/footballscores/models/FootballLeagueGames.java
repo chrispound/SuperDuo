@@ -59,4 +59,29 @@ public class FootballLeagueGames implements Parcelable {
             return new FootballLeagueGames[size];
         }
     };
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FootballLeagueGames that = (FootballLeagueGames) o;
+
+        if (!timeFrameStart.equals(that.timeFrameStart)) return false;
+        if (!timeFrameEnd.equals(that.timeFrameEnd)) return false;
+        if (!count.equals(that.count)) return false;
+        return matches.equals(that.matches);
+
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = timeFrameStart.hashCode();
+        result = 31 * result + timeFrameEnd.hashCode();
+        result = 31 * result + count.hashCode();
+        result = 31 * result + matches.hashCode();
+        return result;
+    }
 }

@@ -1,23 +1,13 @@
-package barqsoft.footballscores.service;
+package barqsoft.footballscores.sync;
 
 import android.app.IntentService;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.squareup.okhttp.OkHttpClient;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -40,7 +30,6 @@ import retrofit.Retrofit;
  */
 public class GameDataService extends IntentService {
 
-    //todo update this to a sync adapter.
     public static final String LOG_TAG = GameDataService.class.getSimpleName();
 
     public GameDataService()

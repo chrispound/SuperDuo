@@ -7,11 +7,9 @@ import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import barqsoft.footballscores.R;
-import barqsoft.footballscores.scores.GameScoreViewHolder;
+import barqsoft.footballscores.games.GameScoreViewHolder;
 import barqsoft.footballscores.utils.Utilities;
 
 /**

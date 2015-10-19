@@ -77,6 +77,28 @@ public class Match implements Parcelable {
                 return new MatchResult[size];
             }
         };
+
+        @Override
+        public boolean equals(Object o)
+        {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            MatchResult that = (MatchResult) o;
+
+            if (goalsHomeTeam != null ? !goalsHomeTeam.equals(that.goalsHomeTeam) : that.goalsHomeTeam != null)
+                return false;
+            return !(goalsAwayTeam != null ? !goalsAwayTeam.equals(that.goalsAwayTeam) : that.goalsAwayTeam != null);
+
+        }
+
+        @Override
+        public int hashCode()
+        {
+            int result = goalsHomeTeam != null ? goalsHomeTeam.hashCode() : 0;
+            result = 31 * result + (goalsAwayTeam != null ? goalsAwayTeam.hashCode() : 0);
+            return result;
+        }
     }
 
     public static class Links implements Parcelable {
@@ -87,6 +109,27 @@ public class Match implements Parcelable {
         @SerializedName("soccerseason")
         @Expose
         public Link soccerSeason;
+
+        @Override
+        public boolean equals(Object o)
+        {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Links links = (Links) o;
+
+            if (self != null ? !self.equals(links.self) : links.self != null) return false;
+            return !(soccerSeason != null ? !soccerSeason.equals(links.soccerSeason) : links.soccerSeason != null);
+
+        }
+
+        @Override
+        public int hashCode()
+        {
+            int result = self != null ? self.hashCode() : 0;
+            result = 31 * result + (soccerSeason != null ? soccerSeason.hashCode() : 0);
+            return result;
+        }
 
         public static class Link implements Parcelable {
             @SerializedName("href")
@@ -126,6 +169,24 @@ public class Match implements Parcelable {
                     return new Link[size];
                 }
             };
+
+            @Override
+            public boolean equals(Object o)
+            {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+
+                Link link = (Link) o;
+
+                return !(href != null ? !href.equals(link.href) : link.href != null);
+
+            }
+
+            @Override
+            public int hashCode()
+            {
+                return href != null ? href.hashCode() : 0;
+            }
         }
 
 
@@ -217,4 +278,38 @@ public class Match implements Parcelable {
             return new Match[size];
         }
     };
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Match match = (Match) o;
+
+        if (date != null ? !date.equals(match.date) : match.date != null) return false;
+        if (status != null ? !status.equals(match.status) : match.status != null) return false;
+        if (matchday != null ? !matchday.equals(match.matchday) : match.matchday != null)
+            return false;
+        if (homeTeamName != null ? !homeTeamName.equals(match.homeTeamName) : match.homeTeamName != null)
+            return false;
+        if (awayTeamName != null ? !awayTeamName.equals(match.awayTeamName) : match.awayTeamName != null)
+            return false;
+        if (result != null ? !result.equals(match.result) : match.result != null) return false;
+        return !(links != null ? !links.equals(match.links) : match.links != null);
+
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result1 = date != null ? date.hashCode() : 0;
+        result1 = 31 * result1 + (status != null ? status.hashCode() : 0);
+        result1 = 31 * result1 + (matchday != null ? matchday.hashCode() : 0);
+        result1 = 31 * result1 + (homeTeamName != null ? homeTeamName.hashCode() : 0);
+        result1 = 31 * result1 + (awayTeamName != null ? awayTeamName.hashCode() : 0);
+        result1 = 31 * result1 + (result != null ? result.hashCode() : 0);
+        result1 = 31 * result1 + (links != null ? links.hashCode() : 0);
+        return result1;
+    }
 }

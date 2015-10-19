@@ -36,4 +36,9 @@
     <string name="share_desc">Share Button</string>
     <string name="away_crest_desc">Away Team Logo</string>
     <string name="home_crest_desc">Home Team Crest</string>
+
+    <!-- SyncAdapter related -->
+    <string name="sync_account_type">barqsoft.footballscores</string>
+    <string name="content_authority">barqsoft.footballscores</string>
+    <string name="no_data">No football games to show</string>
 </resources>
