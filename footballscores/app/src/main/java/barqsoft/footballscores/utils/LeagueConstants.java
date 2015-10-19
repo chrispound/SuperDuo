@@ -1,4 +1,4 @@
-package barqsoft.footballscores;
+package barqsoft.footballscores.utils;
 
 public class LeagueConstants {
 

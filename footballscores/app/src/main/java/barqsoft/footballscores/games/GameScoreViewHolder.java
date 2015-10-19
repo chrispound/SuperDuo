@@ -1,4 +1,4 @@
-package barqsoft.footballscores.scores;
+package barqsoft.footballscores.games;
 
 import android.view.View;
 import android.widget.Button;

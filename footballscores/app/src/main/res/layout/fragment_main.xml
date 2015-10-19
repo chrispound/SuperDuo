@@ -14,4 +14,12 @@
             android:divider="@android:color/transparent"
             android:dividerHeight="15sp"
             />
+
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:text="@string/no_data"/>
 </FrameLayout>

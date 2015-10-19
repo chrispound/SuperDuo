@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import barqsoft.footballscores.scores.GamesScoresFragment;
+import barqsoft.footballscores.games.GamesScoresFragment;
 
 /**
  * Created by yehya khaled on 2/27/2015.
@@ -39,6 +39,7 @@ public class PagerFragment extends Fragment
             viewFragments[i] = new GamesScoresFragment();
             viewFragments[i].setFragmentDate(mformat.format(fragmentdate));
         }
+        mPagerHandler.setOffscreenPageLimit(2);
         mPagerHandler.setAdapter(mPagerAdapter);
         mPagerHandler.setCurrentItem(MainActivity.current_fragment);
         return rootView;

@@ -1,23 +1,13 @@
-package barqsoft.footballscores.service;
+package barqsoft.footballscores.sync;
 
 import android.app.IntentService;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.squareup.okhttp.OkHttpClient;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -39,6 +29,7 @@ import retrofit.Retrofit;
  * Created by yehya khaled on 3/2/2015.
  */
 public class GameDataService extends IntentService {
+
     public static final String LOG_TAG = GameDataService.class.getSimpleName();
 
     public GameDataService()
@@ -156,8 +147,6 @@ public class GameDataService extends IntentService {
                 match_values.put(DatabaseContract.scores_table.AWAY_GOALS_COL, goalsAwayTeam);
                 match_values.put(DatabaseContract.scores_table.LEAGUE_COL, leagueId);
                 match_values.put(DatabaseContract.scores_table.MATCH_DAY, matchDay);
-                //log spam
-
 
                 values.add(match_values);
 
