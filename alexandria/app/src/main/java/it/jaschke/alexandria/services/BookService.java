@@ -48,6 +48,7 @@ public class BookService extends IntentService {
             final String action = intent.getAction();
             if (FETCH_BOOK.equals(action)) {
                 final String ean = intent.getStringExtra(EAN);
+                //todo handle no connection
                 fetchBook(ean);
             } else if (DELETE_BOOK.equals(action)) {
                 final String ean = intent.getStringExtra(EAN);
@@ -71,7 +72,7 @@ public class BookService extends IntentService {
      * parameters.
      */
     private void fetchBook(String ean) {
-
+    //todo retrofit && gson
         if(ean.length()!=13){
             return;
         }
