@@ -1,9 +1,11 @@
 package it.jaschke.alexandria;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -14,6 +16,7 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,6 +30,7 @@ import it.jaschke.alexandria.camera.BarcodeCaptureActivity;
 import it.jaschke.alexandria.data.AlexandriaContract;
 import it.jaschke.alexandria.services.BookService;
 import it.jaschke.alexandria.services.DownloadImage;
+import it.jaschke.alexandria.utils.Utilities;
 
 
 public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -135,9 +139,6 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
 
     private void lookUpBook(String barcode)
     {
-        if(barcode == null) {
-            return;
-        }
         //catch isbn10 numbers
         if (barcode.length() == 10 && !barcode.startsWith("978")) {
             barcode = "978" + barcode;
@@ -146,6 +147,18 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
             clearFields();
             return;
         }
+
+        //dismiss keyboard
+        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mISBNEditText.getWindowToken(), 0);
+        if(barcode == null) {
+            return;
+        }
+        if(!Utilities.isNetworkConnected(getActivity().getApplicationContext())) {
+            Snackbar.make(rootView, R.string.no_conntection, Snackbar.LENGTH_LONG).show();
+            return;
+        }
+
 
         Intent bookIntent = new Intent(getActivity(), BookService.class);
         bookIntent.putExtra(BookService.EAN, barcode);
