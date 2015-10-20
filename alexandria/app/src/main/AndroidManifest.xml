@@ -31,7 +31,8 @@
                 android:value=".MainActivity" />
         </activity>
 
-
+        <activity android:name=".camera.BarcodeCaptureActivity"
+                  android:label="Read Barcode"/>
 
         <provider
             android:name=".data.BookProvider"
