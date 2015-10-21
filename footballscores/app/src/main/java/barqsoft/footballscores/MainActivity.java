@@ -44,12 +44,6 @@ public class MainActivity extends AppCompatActivity {
         mPagerAdapter = new GameScoreFragmentPagerAdapter(getApplicationContext(), getSupportFragmentManager());
         mPagerHandler.setOffscreenPageLimit(2);
         mPagerHandler.setAdapter(mPagerAdapter);
-        /**
-         * Seems to be an issue with the PagerTabStrip ref: https://code.google.com/p/android/issues/detail?id=183127
-         */
-        mPagerHandler.setCurrentItem(1);
-        mPagerHandler.setCurrentItem(0);
-        //set to what we really want the item to be.
         mPagerHandler.setCurrentItem(MainActivity.current_fragment);
     }
     @Override

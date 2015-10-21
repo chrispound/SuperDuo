@@ -31,7 +31,9 @@
 
         <provider
             android:name=".data.ScoresProvider"
-            android:authorities="barqsoft.footballscores" />
+            android:authorities="barqsoft.footballscores"
+            android:exported="false"
+            android:syncable="true"/>
 
         <activity
             android:name=".about.AboutActivity"
@@ -41,9 +43,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="barqsoft.footballscores.MainActivity" />
         </activity>
-        <service android:name=".sync.GameDataService"/>
         <service android:name=".widget.FootballWidgetListService"
         android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <account-authenticator
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:accountType="barqsoft.footballscores"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"/>
+
         <!-- SyncAdapter's dummy authentication service -->
         <service android:name=".sync.FootballScoresAuthenticatorService">
             <intent-filter>

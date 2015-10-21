@@ -42,6 +42,6 @@
     <string name="home_crest_desc">Home Team</string>
 
     <!-- SyncAdapter related -->
-    <string name="sync_account_type">barqsoft.footballscores</string>
-    <string name="content_authority">barqsoft.footballscores</string>
+    <string name="sync_account_type" translatable="false">barqsoft.footballscores</string>
+    <string name="content_authority" translatable="false">barqsoft.footballscores</string>
 </resources>
