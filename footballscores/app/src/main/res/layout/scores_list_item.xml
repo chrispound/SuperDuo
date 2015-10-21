@@ -74,7 +74,6 @@
         android:layout_toEndOf="@+id/score_textview"
         android:layout_toRightOf="@+id/score_textview"
         android:gravity="center"
-        android:singleLine="false"
         android:text="@string/test_text"
         android:textSize="@dimen/TeamNames"/>
 

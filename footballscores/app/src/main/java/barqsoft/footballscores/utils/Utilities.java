@@ -86,8 +86,9 @@ public class Utilities {
 
     public static int getTeamCrestByTeamName(String teamname) {
         if (teamname == null) {
-            return R.drawable.no_icon;
+            return R.mipmap.no_icon;
         }
+
         switch (teamname) { //This is the set of icons that are currently in the app. Feel free to find and add more
             //as you go.
             case "Arsenal London FC":
@@ -110,8 +111,12 @@ public class Utilities {
                 return R.drawable.sunderland;
             case "Stoke City FC":
                 return R.drawable.stoke_city;
+            case "FC Zenit St. Petersburg":
+                return R.mipmap.zenit_st_petersburg;
+            case "Olympique Lyonnais":
+                return R.mipmap.olympique_lyonnais;
             default:
-                return R.drawable.no_icon;
+                return R.mipmap.no_icon;
         }
     }
 
