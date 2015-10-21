@@ -62,6 +62,16 @@ public class GameScoreCursorAdapter extends CursorAdapter {
             }
         });
 
+
+        //todo it would be nice to report if a game hasn't started or if there is no score to report.
+        StringBuilder gameReport = new StringBuilder();
+        gameReport.append(mHolder.home_name.getText().toString())
+            .append(view.getContext().getString(R.string.playing))
+            .append(mHolder.away_name.getText().toString())
+            .append(view.getContext().getString(R.string.current_score))
+            .append(mHolder.score.getText().toString());
+        view.setContentDescription(gameReport.toString());
+
     }
 
     public Intent createShareForecastIntent(String ShareText) {
