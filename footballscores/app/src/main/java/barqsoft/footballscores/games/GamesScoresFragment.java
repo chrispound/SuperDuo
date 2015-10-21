@@ -9,7 +9,6 @@ import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import barqsoft.footballscores.MainActivity;
@@ -45,16 +44,16 @@ public class GamesScoresFragment extends Fragment implements LoaderManager.Loade
         mScoreList.setAdapter(mAdapter);
         getLoaderManager().initLoader(SCORES_LOADER, null, this);
         mAdapter.detail_match_id = MainActivity.selected_match_id;
-        mScoreList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                GameScoreViewHolder selected = (GameScoreViewHolder) view.getTag();
-                mAdapter.detail_match_id = selected.match_id;
-                MainActivity.selected_match_id = (int) selected.match_id;
-                mAdapter.notifyDataSetChanged();
-            }
-        });
+//        mScoreList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+//            {
+//                GameScoreViewHolder selected = (GameScoreViewHolder) view.getTag();
+//                mAdapter.detail_match_id = selected.match_id;
+//                MainActivity.selected_match_id = (int) selected.match_id;
+//                mAdapter.notifyDataSetChanged();
+//            }
+//        });
         emptyView = rootView.findViewById(R.id.error);
         return rootView;
     }
@@ -93,4 +92,8 @@ public class GamesScoresFragment extends Fragment implements LoaderManager.Loade
     }
 
 
+    public void updateView()
+    {
+        getLoaderManager().restartLoader(SCORES_LOADER, null, this);
+    }
 }

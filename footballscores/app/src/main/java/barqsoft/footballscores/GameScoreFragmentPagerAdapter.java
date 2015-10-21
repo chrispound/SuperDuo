@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.text.format.Time;
 
 import java.text.SimpleDateFormat;
@@ -27,6 +26,15 @@ public class GameScoreFragmentPagerAdapter extends FragmentStatePagerAdapter
             SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
             viewFragments[i] = new GamesScoresFragment();
             viewFragments[i].setFragmentDate(mformat.format(fragmentdate));
+        }
+    }
+
+    public void updateFragments()
+    {
+        for (int i = 0; i < viewFragments.length; i++) {
+            if (viewFragments[i] != null) {
+                viewFragments[i].updateView();
+            }
         }
     }
 
