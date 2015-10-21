@@ -23,7 +23,7 @@
     <string name="no_data">No football games to show</string>
     <string name="game_time">Game time at</string>
     <string name="playing"> playing </string>
-    <string name="current_score"> the current score is </string>
+    <string name="current_score"> score is </string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="about_text">
         This Application get Football Matches Score for the Premier League,Seria A,Bundesliga,Primera Division

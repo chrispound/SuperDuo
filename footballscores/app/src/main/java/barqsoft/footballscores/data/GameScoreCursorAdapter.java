@@ -62,7 +62,6 @@ public class GameScoreCursorAdapter extends CursorAdapter {
             }
         });
 
-
         //todo it would be nice to report if a game hasn't started or if there is no score to report.
         StringBuilder gameReport = new StringBuilder();
         gameReport.append(mHolder.home_name.getText().toString())
