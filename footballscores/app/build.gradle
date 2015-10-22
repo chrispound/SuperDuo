@@ -18,6 +18,7 @@ android {
         }
     }
 
+    //Make sure to add your api key in the gradle.properties file
     applicationVariants.all { variant ->
         buildConfigField "String", "FOOTBALL_API_KEY", "\"" + footballApiKey + "\""
     }
