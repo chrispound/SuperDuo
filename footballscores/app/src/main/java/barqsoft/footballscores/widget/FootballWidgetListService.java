@@ -14,7 +14,6 @@ import java.util.Date;
 
 import barqsoft.footballscores.R;
 import barqsoft.footballscores.data.DatabaseContract;
-import barqsoft.footballscores.data.GameScoreCursorAdapter;
 import barqsoft.footballscores.models.Match;
 import barqsoft.footballscores.utils.Utilities;
 
@@ -32,6 +31,7 @@ public class FootballWidgetListService extends RemoteViewsService {
         private final Context mContext;
         private final int mAppWidgetId;
         private ArrayList<Match> mMatches = new ArrayList<>();
+        private boolean isEmptyView;
 
         public FootballWidgetViewsFactory(Context context, Intent intent) {
             mContext = context;
@@ -45,7 +45,6 @@ public class FootballWidgetListService extends RemoteViewsService {
         public void onCreate()
         {
 
-            GameScoreCursorAdapter mAdapter = new GameScoreCursorAdapter(mContext, null, 0);
             mMatches = new ArrayList<>();
             Date fragmentdate = new Date(System.currentTimeMillis());
             SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
@@ -89,6 +88,10 @@ public class FootballWidgetListService extends RemoteViewsService {
         @Override
         public int getCount()
         {
+            if (mMatches.size() == 0) {
+                isEmptyView = true;
+                return 1;
+            }
             Log.d("widget service", "getCount: " + mMatches.size());
             return mMatches.size();
         }
@@ -96,6 +99,10 @@ public class FootballWidgetListService extends RemoteViewsService {
         @Override
         public RemoteViews getViewAt(int position)
         {
+            if (isEmptyView) {
+                RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.empty_widget);
+                return rv;
+            }
             RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.widget_game_item);
             Match match = mMatches.get(position);
             rv.setTextViewText(R.id.home_name, match.homeTeamName);

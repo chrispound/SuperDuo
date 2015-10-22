@@ -23,4 +23,10 @@
         android:divider="@color/divider"
         android:dividerHeight="2dp"/>
 
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/no_data"/>
+
 </LinearLayout>
