@@ -94,6 +94,9 @@ public class GamesScoresFragment extends Fragment implements LoaderManager.Loade
 
     public void updateView()
     {
+        if (getActivity() == null) {
+            return;
+        }
         getLoaderManager().restartLoader(SCORES_LOADER, null, this);
     }
 }

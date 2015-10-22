@@ -5,21 +5,11 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.widget.RemoteViews;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
 import barqsoft.footballscores.R;
-import barqsoft.footballscores.data.DatabaseContract;
-import barqsoft.footballscores.data.GameScoreCursorAdapter;
-import barqsoft.footballscores.models.FootballLeagueGames;
-import barqsoft.footballscores.models.Match;
 import barqsoft.footballscores.utils.Constants;
-import barqsoft.footballscores.utils.Utilities;
 
 public class FootballScoresWidgetProvider extends AppWidgetProvider {
 
@@ -67,7 +57,6 @@ public class FootballScoresWidgetProvider extends AppWidgetProvider {
             collectionService.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
             RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.appwidget_main);
             rv.setRemoteAdapter(R.id.scores_list, collectionService);
-            //todo empty view
             appWidgetManager.updateAppWidget(appWidgetIds[i], rv);
         }
 
