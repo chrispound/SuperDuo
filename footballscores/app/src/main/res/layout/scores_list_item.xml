@@ -79,56 +79,41 @@
         android:text="@string/test_text"
         android:textSize="@dimen/TeamNames"/>
 
-    <RelativeLayout
-        android:id="@+id/game_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/home_name">
-
         <TextView
         android:id="@+id/league_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_below="@id/home_name"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_toLeftOf="@+id/div"
-        android:layout_toStartOf="@+id/div"
         android:gravity="center"
         android:text="@string/test_text"
         android:textColor="@android:color/black"
         android:textSize="@dimen/League"/>
-
-        <View
-            android:id="@+id/div"
-            android:layout_width="4dp"
-            android:layout_height="8dp"
-            android:layout_centerInParent="true"/>
 
     <TextView
         android:id="@+id/matchday_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/league_textview"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_toEndOf="@+id/div"
-        android:layout_toRightOf="@+id/div"
         android:gravity="center"
         android:text="@string/test_text"
         android:textColor="@android:color/black"
         android:textSize="@dimen/League"/>
-    </RelativeLayout>
 
     <Button
         android:id="@+id/share_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/game_info"
+        android:layout_below="@id/matchday_textview"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"

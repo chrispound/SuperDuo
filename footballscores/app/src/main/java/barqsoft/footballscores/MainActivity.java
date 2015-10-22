@@ -1,7 +1,6 @@
 package barqsoft.footballscores;
 
 import android.content.BroadcastReceiver;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -11,37 +10,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import barqsoft.footballscores.about.AboutActivity;
-import barqsoft.footballscores.games.GamesScoresFragment;
 import barqsoft.footballscores.sync.FootballScoresSyncAdapter;
 import barqsoft.footballscores.utils.Constants;
 
 public class MainActivity extends AppCompatActivity {
+    public static final int NUM_PAGES = 5;
     public static int selected_match_id;
     public static int current_fragment = 2;
     public static String LOG_TAG = "MainActivity";
     private final String save_tag = "Save Test";
-    public static final int NUM_PAGES = 5;
     public ViewPager mPagerHandler;
     private GameScoreFragmentPagerAdapter mPagerAdapter;
-    private GamesScoresFragment[] viewFragments = new GamesScoresFragment[5];
 
-    List<updateContentListener> updateContentListenerList = new ArrayList<>();
     private BroadcastReceiver syncFinishedReceiver = new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
             //notify fragments to update
-            for(updateContentListener listener : updateContentListenerList) {
-
-            }
+            mPagerAdapter.updateFragments();
         }
     };
 
@@ -56,12 +44,6 @@ public class MainActivity extends AppCompatActivity {
         mPagerAdapter = new GameScoreFragmentPagerAdapter(getApplicationContext(), getSupportFragmentManager());
         mPagerHandler.setOffscreenPageLimit(2);
         mPagerHandler.setAdapter(mPagerAdapter);
-        /**
-         * Seems to be an issue with the PagerTabStrip ref: https://code.google.com/p/android/issues/detail?id=183127
-         */
-        mPagerHandler.setCurrentItem(1);
-        mPagerHandler.setCurrentItem(0);
-        //set to what we really want the item to be.
         mPagerHandler.setCurrentItem(MainActivity.current_fragment);
     }
     @Override
@@ -70,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         registerReceiver(syncFinishedReceiver, new IntentFilter(Constants.SYNC_FINISHED));
     }
-
-
 
     @Override
     protected void onDestroy()
@@ -120,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState)
     {
-        //todo not always called.
         Log.v(save_tag, "will retrive");
         Log.v(save_tag, "fragment: " + String.valueOf(savedInstanceState.getInt("Pager_Current")));
         Log.v(save_tag, "selected id: " + savedInstanceState.getInt("Selected_match"));
@@ -129,13 +108,4 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
     }
 
-
-
-    public void addListener(updateContentListener listener) {
-        updateContentListenerList.add(listener);
-    }
-
-    private interface updateContentListener {
-        void updateContent();
-    }
 }

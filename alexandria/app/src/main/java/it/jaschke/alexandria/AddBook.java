@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -282,9 +283,11 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
     }
 
     @Override
-    public void onAttach(Activity activity)
+    public void onResume()
     {
-        super.onAttach(activity);
-        activity.setTitle(R.string.scan);
+        super.onResume();
+        if(getActivity() != null)
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.scan);
     }
+
 }

@@ -28,6 +28,7 @@
         android:layout_marginStart="8dp"
         android:layout_toLeftOf="@+id/score_textview"
         android:layout_toStartOf="@+id/score_textview"
+        android:gravity="center_horizontal"
         android:maxLength="30"
         android:singleLine="false"
         android:text="@string/test_text"
@@ -39,7 +40,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/primary"
         android:textSize="24sp"/>
 
     <ImageView
