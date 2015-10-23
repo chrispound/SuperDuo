@@ -51,7 +51,7 @@ public class GameScoreCursorAdapter extends CursorAdapter {
 
         mHolder.matchDay.setText(Utilities.getMatchDay(cursor.getInt(DatabaseContract.COL_MATCHDAY),
             cursor.getInt(DatabaseContract.COL_LEAGUE)));
-        mHolder.league.setText(Utilities.getLeague(cursor.getInt(DatabaseContract.COL_LEAGUE)));
+        mHolder.league.setText(Utilities.getLeague(context, cursor.getInt(DatabaseContract.COL_LEAGUE)));
         mHolder.share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
