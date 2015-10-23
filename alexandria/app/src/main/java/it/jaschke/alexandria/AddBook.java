@@ -212,7 +212,7 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
 
     private void restartLoader()
     {
-        getLoaderManager().restartLoader(LOADER_ID,  null , AddBook.this);
+        getLoaderManager().restartLoader(LOADER_ID, null, AddBook.this);
     }
 
     @Override
@@ -249,6 +249,9 @@ public class AddBook extends Fragment implements LoaderManager.LoaderCallbacks<C
         ((TextView) rootView.findViewById(R.id.bookSubTitle)).setText(bookSubTitle);
 
         String authors = data.getString(data.getColumnIndex(AlexandriaContract.AuthorEntry.AUTHOR));
+        if(authors == null) {
+            authors = getString(R.string.na);
+        }
         String[] authorsArr = authors.split(",");
         ((TextView) rootView.findViewById(R.id.authors)).setLines(authorsArr.length);
         ((TextView) rootView.findViewById(R.id.authors)).setText(authors.replace(",", "\n"));

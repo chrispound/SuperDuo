@@ -24,37 +24,35 @@ public class Utilities {
     public static final int EREDIVISIE = 404;
     public static final int CHAMPIONS_LEAGUE = 405;
 
-    public static String getLeague(int league_num) {
+    public static String getLeague(Context context, int league_num)
+    {
         switch (league_num) {
             case SERIE_A:
-                return "Seria A";
+                return context.getString(R.string.seria_a);
             case PREMIER_LEAGUE:
-                return "Premier League";
+                return context.getString(R.string.premierleague);
             case CHAMPIONS_LEAGUE:
-                return "UEFA Champions League";
+                return context.getString(R.string.champions_league);
             case PRIMERA_DIVISION:
-                return "Primera Division";
-            case BUNDESLIGA:
-                return "Bundesliga";
+                return context.getString(R.string.primera_division);
             case FILLERLEAGUE:
-                return "Test Data ";
+                return context.getString(R.string.filler_leage);
             case LIGUE:
-                return "Ligue";
-            case SEGUNDA_DIVISION:
-                return "Segunda Division";
-            case PRIMERA_LIGA:
-                return "Primera Liga";
-            case EREDIVISIE:
-                return "Eredivisie";
-            case BUNDESLIGA2:
-                return "Bundesliga";
             case LIGUE2:
-                return "Ligue";
+                return context.getString(R.string.ligue);
+            case SEGUNDA_DIVISION:
+                return context.getString(R.string.segunda_division);
+            case PRIMERA_LIGA:
+                return context.getString(R.string.primera_liga);
+            case EREDIVISIE:
+                return context.getString(R.string.eredivisie);
+            case BUNDESLIGA:
+            case BUNDESLIGA2:
             case BUNDESLIGA3:
-                return "Bundesliga";
+                return context.getString(R.string.bundesliga);
             default:
                 //todo strings.xml
-                return "Not known League Please report";
+                return context.getString(R.string.unknown_league);
         }
     }
 
